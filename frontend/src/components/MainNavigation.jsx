@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router";
 
 export default function MainNavigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLight, setIsLight] = useState(true);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -12,12 +13,23 @@ export default function MainNavigation() {
     setIsOpen(false);
   };
 
+  const toggleTheme = () => {
+    setIsLight(!isLight);
+  };
+
+  useEffect(() => {
+    document.body.className = isLight ? 'light-theme' : 'dark-theme';
+  }, [isLight]);
+
   return (
-    <header className=" p-4">
+    <header className="p-4">
       <nav className="container mx-auto flex justify-between items-center">
         <div className="text-white text-xl">VK</div>
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white focus:outline-none">
+          <button
+            onClick={toggleMenu}
+            className="text-white focus:outline-none"
+          >
             <svg
               className="w-6 h-6"
               fill="none"
@@ -93,10 +105,17 @@ export default function MainNavigation() {
             </NavLink>
           </li>
           <li>
-          <label class="switch">
-  <input type="checkbox"/>
-  <span class="slider round"></span>
-</label>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={!isLight}
+                onChange={() => {
+                  toggleTheme();
+                  console.log(isLight);
+                }}
+              />
+              <span className="slider round"></span>
+            </label>
           </li>
         </ul>
       </nav>
