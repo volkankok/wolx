@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router';
 import Root from "./pages/Root.jsx";
 import Ana from "./pages/Ana.jsx";
 import About from "./pages/About.jsx";
-import Projects from "./pages/Projects.jsx";
+import Project from "./pages/Project.jsx";
 import Contact from "./pages/Contact.jsx";
 import './App.css';
 
@@ -14,7 +14,7 @@ function App() {
       children: [
         { index: true, element: <Ana /> },
         { path: '/hakkimda', element: <About /> },
-        { path: '/projeler', element: <Projects /> },
+        { path: '/projeler', element: <Project /> },
         { path: '/iletisim', element: <Contact /> },
       ],
     },
