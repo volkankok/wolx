@@ -58,20 +58,20 @@ export const projects = [
         image: projectbg,
         link: "https://www.google.com"
     },
-    // {
-    //     id: 9,
-    //     title: "Project 9",
-    //     description: "This is a project description",
-    //     image: projectbg,
-    //     link: "https://www.google.com"
-    // },
-    // {
-    //     id: 10,
-    //     title: "Project 10",
-    //     description: "This is a project description",
-    //     image: projectbg,
-    //     link: "https://www.google.com"
-    // }
+    {
+        id: 9,
+        title: "Project 9",
+        description: "This is a project description",
+        image: projectbg,
+        link: "https://www.google.com"
+    },
+    {
+        id: 10,
+        title: "Project 10",
+        description: "This is a project description",
+        image: projectbg,
+        link: "https://www.google.com"
+    }
 
 
 ];
