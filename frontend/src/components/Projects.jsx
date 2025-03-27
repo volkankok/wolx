@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { projects } from './Data';
+import ProjectsDetail from './ProjectsDetail';
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const handleCardClick = (project) => {
+    setSelectedProject(project);
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+  };
+
   return (
-    <div className="flex justify-center items-center mt-0">
+    <div className="flex justify-center  items-center mt-0">
       <div className=" bg-opacity-30 backdrop-blur-md p-8 rounded-2xl shadow-lg w-full max-w-6xl">
         {/* Scrollable container */}
         <div
@@ -13,15 +24,22 @@ const Projects = () => {
             <div
               key={project.id}
               className="bg-white bg-opacity-80 backdrop-blur-sm p-4 rounded-lg shadow-md hover:shadow-lg transition-transform duration-300 transform hover:scale-105 cursor-pointer m-4"
-              onClick={() => window.open(project.link, '_blank')}
+              onClick={() => handleCardClick(project)}
             >
-              <img src={project.image} alt={project.title} className="w-full h-32 object-cover rounded-md" />
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-32 object-cover rounded-md"
+              />
               <h2 className="mt-2 text-center text-lg font-semibold">{project.title}</h2>
-              {/* <p className="text-center text-gray-600">{project.description}</p> */}
             </div>
           ))}
         </div>
       </div>
+      {/* Modal */}
+      {selectedProject && (
+        <ProjectsDetail project={selectedProject} onClose={closeModal} />
+      )}
     </div>
   );
 };
