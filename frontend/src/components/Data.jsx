@@ -71,6 +71,13 @@ export const projects = [
         description: "This is a project description",
         image: projectbg,
         link: "https://www.google.com"
+    },
+    {
+        id: 11,
+        title: "Project 11",
+        description: "This is a project description",
+        image: projectbg,
+        link: "https://www.google.com"
     }
 
 

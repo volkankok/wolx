@@ -1,31 +1,33 @@
 import React from 'react';
-import kafa from '../assets/kafa.jpg'; // Görseli buraya ekleyin
+import kafa from '../assets/kafa.jpg'; 
 
 export default function Ana() {
   return (
-    <div className="bg-opacity-30 backdrop-blur-md p-8 rounded-2xl shadow-lg w-full max-w-6xl">
-      <div className="container mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-center">
+    <div className="flex items-center justify-center bg-opacity-30 backdrop-blur-md p-1 rounded-2xl shadow-lg w-full max-w-390 mx-auto mt-5">
+      <div className="container mx-auto px-1 lg:px-20 flex flex-col lg:flex-row items-center">
+        
         {/* Sol: Metin Alanı */}
-        <div className="lg:w-1/2 text-center lg:text-left">
+        <div className="lg:w-1/2 text-center lg:text-left max-w-6xl ">
           <div className="mb-4">
-            <span className="inline-block bg-green-500 text-black px-4 py-2 rounded-full text-sm font-semibold">
-              ✌️ Hi There! I'm Onyedika
+            <span className="inline-block bg-green-500 text-black px-4 py-2 rounded-full text-sm font-semibold mt-5 ml-1">
+              ✌️ Merhaba! Ben Volkan
             </span>
+            
           </div>
-          <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-            A <span className="text-green-400">Frontend Engineer</span>. I Help Startups <span className="text-green-400">Launch</span> And <span className="text-green-400">Grow</span> Their Products
+          <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-4">
+            <span className="text-green-400">Full Stack Developer.</span> Startup Oluşumlara Kendi Ürünlerini <span className="text-green-400">Yayınlamada </span> ve <span className="text-green-400">Büyütmede </span> yardımcı oluyorum
           </h1>
-          <p className="text-gray-400 text-lg leading-relaxed">
-            Over 4yrs+ of professional experience working with several programming tools to deliver quality results to clients. I have expert knowledge in frontend engineering, software testing, and web3 development.
+          <p className="text-gray-400 text-lg leading-relaxed pl-4 mb-4">
+            4+ yıllık profesyonel deneyimimle çeşitli programlama araçları kullanarak müşterilere kaliteli sonuçlar sunuyorum. Frontend, backend, yazılım testi ve web3 geliştirme konularında uzman bilgiye sahibim.
           </p>
         </div>
 
         {/* Sağ: Görsel Alanı */}
-        <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center">
+        <div className="lg:w-1/2 mt-10 lg:mt-0 flex lg:justify-end">
           <img
             src={kafa} // Görsel yolunu buraya ekleyin
             alt="Frontend Engineer Illustration"
-            className="w-full max-w-sm lg:max-w-md object-contain rounded-lg shadow-lg"
+            className="w-full max-w-xs object-contain rounded-lg shadow-lg"
           />
         </div>
       </div>

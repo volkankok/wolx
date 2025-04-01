@@ -22,8 +22,8 @@ const Projects = () => {
         >
           {projects.map((project) => (
             <div
-              key={project.id}
-              className="bg-white bg-opacity-80 backdrop-blur-sm p-4 rounded-lg shadow-md hover:shadow-lg transition-transform duration-300 transform hover:scale-105 cursor-pointer m-4"
+              key={project.id}bg-white bg-opacit
+              className="y-80 backdrop-blur-sm p-4 rounded-lg shadow-md hover:shadow-lg transition-transform duration-300 transform hover:scale-105 cursor-pointer m-4"
               onClick={() => handleCardClick(project)}
             >
               <img

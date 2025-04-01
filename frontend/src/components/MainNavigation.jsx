@@ -49,7 +49,7 @@ export default function MainNavigation() {
         <ul
           className={`${
             isOpen ? "block" : "hidden"
-          } md:flex md:items-center md:space-x-4 space-y-4 md:space-y-0 absolute md:static  w-full md:w-auto left-0 md:left-auto top-16 md:top-auto p-4 md:p-0  text-xl mr-60 font-roboto`}
+          } md:flex md:items-center md:space-x-4 space-y-4 md:space-y-0 absolute md:static  w-full md:w-auto left-0 md:left-auto top-16 md:top-auto p-4 md:p-0  text-xl mr-60 font-roboto z-50`}
         >
           <li>
             <NavLink
