@@ -9,6 +9,7 @@ export default function Contact() {
         subject: '',
         message: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const navigate = useNavigate();
 
@@ -21,6 +22,9 @@ export default function Contact() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (isSubmitting) return;
+
+        setIsSubmitting(true);
         const data = new FormData();
         data.append('name', formData.name);
         data.append('email', formData.email);
@@ -28,10 +32,16 @@ export default function Contact() {
         data.append('message', formData.message);
 
         try {
-            const response = await fetch('http://localhost:5000/api/contact', {
+            const apiUrl = import.meta.env.VITE_API_URL || 'https://volkankok.dev';
+            const response = await fetch(`${apiUrl}/api/contact`, {
                 method: 'POST',
-                body: data
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
             });
+
+            const result = await response.json();
 
             if (response.ok) {
                 alert('Mesajınız başarıyla gönderildi!');
@@ -41,24 +51,28 @@ export default function Contact() {
                     subject: '',
                     message: ''
                 });
-                navigate('/'); // Ana sayfaya yönlendirme
+                navigate('/');
             } else {
-                alert('Mesaj gönderilirken bir hata oluştu.');
+                throw new Error(result.error || 'Mesaj gönderilirken bir hata oluştu.');
             }
         } catch (error) {
-            console.error('Fetch error:', error);
-            alert('Sunucuya bağlanırken bir hata oluştu.');
+            console.error('Form gönderme hatası:', error);
+            alert(error.message || 'Sunucuya bağlanırken bir hata oluştu.');
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
     const handleClose = () => {
-        setFormData({
-            name: '',
-            email: '',
-            subject: '',
-            message: ''
-        });
-        navigate('/');
+        if (!isSubmitting) {
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
+            navigate('/');
+        }
     };
 
     const handleOutsideClick = (e) => {
@@ -70,7 +84,13 @@ export default function Contact() {
     return (
         <div className="contact-modal" onClick={handleOutsideClick}>
             <div className="contact-container">
-                <button className="contact-closeButton" onClick={handleClose}>X</button>
+                <button 
+                    className="contact-closeButton" 
+                    onClick={handleClose}
+                    disabled={isSubmitting}
+                >
+                    X
+                </button>
                 <form onSubmit={handleSubmit} className="contact-form">
                     <h1>İletişim Formu</h1>
                     <input
@@ -80,6 +100,8 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         className="contact-input"
+                        required
+                        disabled={isSubmitting}
                     />
                     <input
                         type="email"
@@ -88,6 +110,8 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         className="contact-input"
+                        required
+                        disabled={isSubmitting}
                     />
                     <input
                         type="text"
@@ -96,6 +120,8 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleChange}
                         className="contact-input"
+                        required
+                        disabled={isSubmitting}
                     />
                     <textarea
                         name="message"
@@ -103,8 +129,16 @@ export default function Contact() {
                         value={formData.message}
                         onChange={handleChange}
                         className="contact-textarea"
+                        required
+                        disabled={isSubmitting}
                     />
-                    <button type="submit" className="contact-button">Gönder</button>
+                    <button 
+                        type="submit" 
+                        className="contact-button"
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? 'Gönderiliyor...' : 'Gönder'}
+                    </button>
                 </form>
             </div>
         </div>
