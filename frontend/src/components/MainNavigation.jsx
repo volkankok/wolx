@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 
 export default function MainNavigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,10 +7,12 @@ export default function MainNavigation() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    document.body.style.overflow = isOpen ? 'auto' : 'hidden';
   };
 
   const closeMenu = () => {
     setIsOpen(false);
+    document.body.style.overflow = 'auto';
   };
 
   const toggleTheme = () => {
@@ -19,16 +21,84 @@ export default function MainNavigation() {
 
   useEffect(() => {
     document.body.className = isLight ? 'light-theme' : 'dark-theme';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
   }, [isLight]);
 
   return (
-    <header className="p-4">
-      <nav className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-xl">VK</div>
-        <div className="md:hidden">
+    <header className="p-4 fixed w-full top-0 left-0 z-[1]">
+      <nav className="container mx-auto flex justify-between items-center relative">
+        <div className="text-white text-2xl font-bold z-50 hover:text-gray-200 transition-colors duration-300">VK</div>
+        
+        {/* Masaüstü menü */}
+        <ul className="hidden md:flex md:items-center md:space-x-8 text-2xl ml-[50px]">
+          <li className="relative group">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white font-medium border-b-2 border-white transition-all duration-300"
+                  : "text-gray-300 hover:text-white transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+              }
+              end
+            >
+              ana
+            </NavLink>
+          </li>
+          <li className="relative group">
+            <NavLink
+              to="/hakkimda"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white font-medium border-b-2 border-white transition-all duration-300"
+                  : "text-gray-300 hover:text-white transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+              }
+            >
+              hakkımda
+            </NavLink>
+          </li>
+          <li className="relative group">
+            <NavLink
+              to="/projeler"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white font-medium border-b-2 border-white transition-all duration-300"
+                  : "text-gray-300 hover:text-white transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+              }
+            >
+              projeler
+            </NavLink>
+          </li>
+          <li className="relative group">
+            <NavLink
+              to="/iletisim"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white font-medium border-b-2 border-white transition-all duration-300"
+                  : "text-gray-300 hover:text-white transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+              }
+            >
+              iletişim
+            </NavLink>
+          </li>
+          <li>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={!isLight}
+                onChange={toggleTheme}
+              />
+              <span className="slider round"></span>
+            </label>
+          </li>
+        </ul>
+
+        {/* Mobil menü butonu */}
+        <div className="md:hidden z-[100]">
           <button
             onClick={toggleMenu}
-            className="text-white focus:outline-none"
+            className="text-white hover:text-gray-200 transition-colors duration-300 focus:outline-none"
           >
             <svg
               className="w-6 h-6"
@@ -46,78 +116,83 @@ export default function MainNavigation() {
             </svg>
           </button>
         </div>
-        <ul
-          className={`${
-            isOpen ? "block" : "hidden"
-          } md:flex md:items-center md:space-x-4 space-y-4 md:space-y-0 absolute md:static  w-full md:w-auto left-0 md:left-auto top-16 md:top-auto p-4 md:p-0  text-xl mr-60 font-roboto z-50`}
-        >
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-white font-bold border-b-2 border-white"
-                  : "text-gray-400 hover:text-white"
-              }
-              end
+
+        {/* Mobil menü */}
+        {isOpen && (
+          <div className="fixed inset-0 min-h-screen w-screen z-[999]">
+            <div 
+              className="absolute inset-0 bg-black/80 backdrop-blur-lg"
               onClick={closeMenu}
-            >
-              ana
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/hakkimda"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-white font-bold border-b-2 border-white"
-                  : "text-gray-400 hover:text-white"
-              }
-              onClick={closeMenu}
-            >
-              hakkımda
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/projeler"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-white font-bold border-b-2 border-white"
-                  : "text-gray-400 hover:text-white"
-              }
-              onClick={closeMenu}
-            >
-              projeler
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/iletisim"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-white font-bold border-b-2 border-white"
-                  : "text-gray-400 hover:text-white"
-              }
-              onClick={closeMenu}
-            >
-              iletişim
-            </NavLink>
-          </li>
-          <li>
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={!isLight}
-                onChange={() => {
-                  toggleTheme();
-                  console.log(isLight);
-                }}
-              />
-              <span className="slider round"></span>
-            </label>
-          </li>
-        </ul>
+            />
+            <div className="relative z-[1000] h-screen w-full flex items-center justify-center">
+              <ul className="flex flex-col items-center justify-center space-y-12 text-white">
+                <li className="transform transition-all duration-300 hover:scale-105">
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
+                        : "text-gray-300 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                    }
+                    end
+                    onClick={closeMenu}
+                  >
+                    ana
+                  </NavLink>
+                </li>
+                <li className="transform transition-all duration-300 hover:scale-105">
+                  <NavLink
+                    to="/hakkimda"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
+                        : "text-gray-300 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                    }
+                    onClick={closeMenu}
+                  >
+                    hakkımda
+                  </NavLink>
+                </li>
+                <li className="transform transition-all duration-300 hover:scale-105">
+                  <NavLink
+                    to="/projeler"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
+                        : "text-gray-300 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                    }
+                    onClick={closeMenu}
+                  >
+                    projeler
+                  </NavLink>
+                </li>
+                <li className="transform transition-all duration-300 hover:scale-105">
+                  <NavLink
+                    to="/iletisim"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
+                        : "text-gray-300 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                    }
+                    onClick={closeMenu}
+                  >
+                    iletişim
+                  </NavLink>
+                </li>
+                <li>
+                  <label className="switch">
+                    <input
+                      type="checkbox"
+                      checked={!isLight}
+                      onChange={toggleTheme}
+                    />
+                    <span className="slider round"></span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );
