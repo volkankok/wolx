@@ -3,7 +3,7 @@ import kafa from '../assets/kafa.jpg';
 
 export default function Ana() {
   return (
-    <div className="flex items-center justify-center bg-opacity-30 backdrop-blur-md p-1 rounded-2xl shadow-lg w-full max-w-390 mx-auto mt-5">
+    <div className="flex items-center justify-center  bg-opacity-30 backdrop-blur-md p-1 rounded-2xl shadow-lg w-full max-w-390 mx-auto mt-5">
       <div className="container mx-auto px-1 lg:px-20 flex flex-col lg:flex-row items-center">
         
         {/* Sol: Metin Alanı */}
