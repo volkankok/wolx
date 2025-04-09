@@ -121,7 +121,7 @@ export default function MainNavigation() {
         {isOpen && (
           <div className="fixed inset-0 min-h-screen w-screen z-[999]">
             <div 
-              className="absolute inset-0 bg-black/80 backdrop-blur-lg"
+              className="absolute inset-0 backdrop-blur-lg"
               onClick={closeMenu}
             />
             <div className="relative z-[1000] h-screen w-full flex items-center justify-center">
@@ -132,7 +132,7 @@ export default function MainNavigation() {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
-                        : "text-gray-300 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                        : "text-gray-800 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
                     }
                     end
                     onClick={closeMenu}
@@ -146,7 +146,7 @@ export default function MainNavigation() {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
-                        : "text-gray-300 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                        : "text-gray-800 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
                     }
                     onClick={closeMenu}
                   >
@@ -159,7 +159,7 @@ export default function MainNavigation() {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
-                        : "text-gray-300 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                        : "text-gray-800 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
                     }
                     onClick={closeMenu}
                   >
@@ -172,7 +172,7 @@ export default function MainNavigation() {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
-                        : "text-gray-300 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                        : "text-gray-800 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
                     }
                     onClick={closeMenu}
                   >
