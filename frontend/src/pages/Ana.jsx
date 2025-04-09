@@ -9,15 +9,15 @@ export default function Ana() {
         {/* Sol: Metin Alanı */}
         <div className="lg:w-1/2 text-center lg:text-left max-w-6xl ">
           <div className="mb-4">
-            <span className="inline-block bg-green-500 text-black px-4 py-2 rounded-full text-sm font-semibold mt-5 ml-1">
+            <span className="inline-block bg-fuchsia-400 text-white px-4 py-2 rounded-full text-md font-semibold mt-5 ml-1">
               ✌️ Merhaba! Ben Volkan
             </span>
             
           </div>
           <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-4">
-            <span className="text-green-400">Full Stack Developer.</span> Startup Oluşumlara Kendi Ürünlerini <span className="text-green-400">Yayınlamada </span> ve <span className="text-green-400">Büyütmede </span> yardımcı oluyorum
+            <span className="text-purple-400">Full Stack Developer.</span > <span className="text-blue-200"> Startup Oluşumlara Kendi Ürünlerini</span> <span className="text-indigo-400">Yayınlamada </span> <span className="text-blue-200">ve</span> <span className="text-indigo-400">Büyütmede </span> <span className="text-blue-200">yardımcı oluyorum </span>
           </h1>
-          <p className="text-gray-400 text-lg leading-relaxed pl-4 mb-4">
+          <p className="text-blue-200 text-lg leading-relaxed pl-4 mb-4">
             4+ yıllık profesyonel deneyimimle çeşitli programlama araçları kullanarak müşterilere kaliteli sonuçlar sunuyorum. Frontend, backend, yazılım testi ve web3 geliştirme konularında uzman bilgiye sahibim.
           </p>
         </div>

@@ -132,7 +132,7 @@ export default function MainNavigation() {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
-                        : "text-gray-800 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                        : "text-white hover:text-white text-4xl px-6 py-2 transition-all duration-300"
                     }
                     end
                     onClick={closeMenu}
@@ -146,7 +146,7 @@ export default function MainNavigation() {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
-                        : "text-gray-800 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                        : "text-white hover:text-white text-4xl px-6 py-2 transition-all duration-300"
                     }
                     onClick={closeMenu}
                   >
@@ -159,7 +159,7 @@ export default function MainNavigation() {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
-                        : "text-gray-800 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                        : "text-white hover:text-white text-4xl px-6 py-2 transition-all duration-300"
                     }
                     onClick={closeMenu}
                   >
@@ -172,7 +172,7 @@ export default function MainNavigation() {
                     className={({ isActive }) =>
                       isActive
                         ? "text-white font-medium text-4xl border-b-2 border-white px-6 py-2 transition-all duration-300"
-                        : "text-gray-800 hover:text-white text-4xl px-6 py-2 transition-all duration-300"
+                        : "text-white hover:text-white text-4xl px-6 py-2 transition-all duration-300"
                     }
                     onClick={closeMenu}
                   >
