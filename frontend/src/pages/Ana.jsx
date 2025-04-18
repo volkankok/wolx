@@ -9,7 +9,7 @@ export default function Ana() {
         {/* Sol: Metin Alanı */}
         <div className="lg:w-7/10 text-center lg:text-left max-w-6xl ">
           <div className="mb-4">
-            <span className="inline-block bg-fuchsia-400 text-white px-4 py-2 rounded-full text-md font-semibold mt-5 ml-1 text-3xl">
+            <span className="inline-block bg-fuchsia-400 text-white px-4 py-2 rounded-full  font-semibold mt-5 ml-1 text-2xl">
             👋 Merhaba! Ben &lt;Volkan/&gt;
             </span>
             
