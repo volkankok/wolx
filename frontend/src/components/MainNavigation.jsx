@@ -4,7 +4,14 @@ import { NavLink } from "react-router-dom";
 export default function MainNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLight, setIsLight] = useState(true);
-
+  const [typewriterText, setTypewriterText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+  
+  const textArray = ["VK.", "Volkan Kök.", "Wake up, Neo...", "i am the Alpha and the Omega."];
+  const period = 2000;
+  
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     document.body.style.overflow = isOpen ? 'auto' : 'hidden';
@@ -18,18 +25,58 @@ export default function MainNavigation() {
   const toggleTheme = () => {
     setIsLight(!isLight);
   };
+  
+  // Tema değişimini uygulama
+  useEffect(() => {
+    if (isLight) {
+      document.body.classList.add('light-theme');
+      document.body.classList.remove('dark-theme');
+    } else {
+      document.body.classList.add('dark-theme');
+      document.body.classList.remove('light-theme');
+    }
+  }, [isLight]);
+
+  // Başlangıçta temayı ayarlama
+  useEffect(() => {
+    document.body.classList.add('light-theme');
+  }, []);
 
   useEffect(() => {
-    document.body.className = isLight ? 'light-theme' : 'dark-theme';
-    return () => {
-      document.body.style.overflow = 'auto';
+    let timer = '';
+    const tick = () => {
+      const i = loopNum % textArray.length;
+      const fullText = textArray[i];
+
+      if (isDeleting) {
+        setTypewriterText(fullText.substring(0, typewriterText.length - 1));
+        setTypingSpeed(50);
+      } else {
+        setTypewriterText(fullText.substring(0, typewriterText.length + 1));
+        setTypingSpeed(70);
+      }
+
+      if (!isDeleting && typewriterText === fullText) {
+        setTimeout(() => {
+          setIsDeleting(true);
+        }, period);
+      } else if (isDeleting && typewriterText === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        setTypingSpeed(100);
+      }
     };
-  }, [isLight]);
+
+    timer = setTimeout(tick, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [typewriterText, isDeleting, loopNum, typingSpeed, textArray]);
 
   return (
     <header className="p-4 fixed w-full top-0 left-0 z-[1]">
       <nav className="container mx-auto flex justify-between items-center relative">
-        <div className="text-white text-2xl font-bold z-50 hover:text-gray-200 transition-colors duration-300">VK</div>
+        <a className="text-white text-3xl font-bold z-50 hover:text-gray-200 transition-colors duration-300">
+          <span style={{ borderRight: '0.08em solid #fff', padding: '0 0.1em', fontFamily: 'Courier, monospace' }}>{typewriterText}</span>
+        </a>
         
         {/* Masaüstü menü */}
         <ul className="hidden md:flex md:items-center md:space-x-8 text-2xl ml-[50px]">
